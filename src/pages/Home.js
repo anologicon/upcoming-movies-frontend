@@ -103,13 +103,11 @@ export default function Home() {
                   <Grid item xs={12}>
                     <Paper component={Box} overflow="hidden">
                       <Box mt={1} mb={1} mx={2}>
-                        <form noValidate autoComplete="off">
-                          <TextField
-                            label="Type to search a awosome movie!"
-                            fullWidth
-                            onChange={e => searchMovies(e.target.value)}
-                          />
-                        </form>
+                        <TextField
+                          label="Type to search a awosome movie!"
+                          fullWidth
+                          onChange={e => searchMovies(e.target.value)}
+                        />
                       </Box>
                     </Paper>
                   </Grid>
