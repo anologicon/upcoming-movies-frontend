@@ -96,7 +96,7 @@ export default function Home() {
                 gutterBottom
                 className={classes.headerh1}
               >
-                Upcomming Movies
+                Upcoming Movies
               </Typography>
               <div>
                 <Grid container justify="center">
