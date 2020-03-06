@@ -104,7 +104,7 @@ export default function Home() {
                     <Paper component={Box} overflow="hidden">
                       <Box mt={1} mb={1} mx={2}>
                         <TextField
-                          label="Type to search a awosome movie!"
+                          label="Type to search an awesome movie!"
                           fullWidth
                           onChange={e => searchMovies(e.target.value)}
                         />
