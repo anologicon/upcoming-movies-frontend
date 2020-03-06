@@ -1,12 +1,16 @@
 import axios from 'axios';
 
+const BEARER = process.env.REACT_APP_BEARER;
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const api = axios.create({
-    baseURL: 'http://localhost:3333',
-    headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU4MzMzOTcwOX0.IIG0kI-cHJYal35TdcHNBugJihQDqrxiy3f21Uh2qS4',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-    }
-})
+  baseURL: `${API_BASE_URL}`,
+  headers: {
+    Authorization: `Bearer ${BEARER}`,
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  }
+});
 
 export default api;
