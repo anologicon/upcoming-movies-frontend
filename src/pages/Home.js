@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 30
   },
   cardPosterMovie: {
-    height: 278 // 16:9
+    height: 220 // 16:9
   },
   footer: {
     padding: theme.spacing(6),
@@ -130,11 +130,21 @@ export default function Home() {
                       }}
                     >
                       <CardActionArea>
-                        <CardMedia
+                        {movie.poster !== null ? (
+                          <CardMedia
+                            className={classes.cardPosterMovie}
+                            image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster}`}
+                            title="Poster"
+                          />
+
+                        ) : (
+                          <CardMedia
                           className={classes.cardPosterMovie}
-                          image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster}`}
+                              image={`https://dummyimage.com/370x556/424242/fff&text=+`}
                           title="Poster"
                         />
+
+                        )}
                       </CardActionArea>
                     </Link>
 
@@ -147,16 +157,16 @@ export default function Home() {
                       </Typography>
                       <Typography>{movie.genders.join(", ")}</Typography>
                       <CardActions>
-                        <Link
-                          to={{
-                            pathname: "/details",
-                            state: { movieData: movie }
-                          }}
-                        >
-                          <Button variant="contained" color="primary">
+                        
+                          <Button
+                            to={{
+                              pathname: "/details",
+                              state: { movieData: movie }
+                            }}
+
+                            component={Link} variant="contained" color="primary">
                             Details
                           </Button>
-                        </Link>
                       </CardActions>
                     </CardContent>
                   </Card>

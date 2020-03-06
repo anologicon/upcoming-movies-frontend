@@ -46,16 +46,25 @@ export default function MovieDetail({ location }) {
               {movieData.title}
             </Typography>
             <Grid container justify="center">
-              <Grid item xs={6}>
+              <Grid item md={6} xs={12} >
                 <Card>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="556"
-                    width="370"
-                    image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movieData.poster}`}
-                    title={movieData.title}
-                  />
+                  {movieData.poster !== null ? (
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="556"
+                      width="370"
+                      image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movieData.poster}`}
+                      title={movieData.title}
+                    />
+                  ) : (
+                    <CardMedia
+                        component="img"
+                        className={classes.cardPosterMovie}
+                        image={`https://dummyimage.com/370x556/424242/fff&text=+`}
+                        title="Poster"
+                      />
+                  )}
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h5">
                       Overview
