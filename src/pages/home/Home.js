@@ -1,31 +1,47 @@
 import React from 'react';
 import './Home.css';
 import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+    fontFamily: "",
+  },
+  headerh1: {
+    marginTop: 60,
+  },
+  lisGrid: {
+    marginTop: 60,
+    marginBottom: 30,
+  },
+  cardPosterMovie: {
+    height: 278, // 16:9
+  },
+
+}));
 
 export default function Home() {
+
+    const classes = useStyles();
 
     const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     return (
       <React.Fragment>
         <CssBaseline />
-        <AppBar position="relative">
-          <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              Album layout
-            </Typography>
-          </Toolbar>
-        </AppBar>
         <main>
           {/* Hero unit */}
           <div>
@@ -36,84 +52,59 @@ export default function Home() {
                 align="center"
                 color="textPrimary"
                 gutterBottom
+                className={classes.headerh1}
               >
-                Album layout
-              </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                Something short and leading about the collection below—its
-                contents, the creator, etc. Make it short and sweet, but not too
-                short so folks don&apos;t simply skip over it entirely.
+                Upcomming Movies
               </Typography>
               <div>
-                <Grid container spacing={2} justify="center">
-                  <Grid item>
-                    <Button variant="contained" color="primary">
-                      Main call to action
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="outlined" color="primary">
-                      Secondary action
-                    </Button>
+                <Grid container justify="center" >
+                  <Grid item xs={12} >
+                    <Paper component={Box} overflow="hidden">
+                      <Box mt={1} mb={1} mx={2}>
+                        <form noValidate autoComplete="off">
+                          <TextField 
+                            classesName={classes.textField}
+                            label="Type to search a awosome movie!"
+                            fullWidth 
+                          />
+                        </form>
+                      </Box>
+                    </Paper>
                   </Grid>
                 </Grid>
               </div>
             </Container>
           </div>
-          <Container maxWidth="md">
+          <Container maxWidth="md" className={classes.lisGrid}>
             {/* End hero unit */}
-            <Grid container spacing={4}>
+            <Grid container spacing={6}>
               {cards.map(card => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
                   <Card >
-                    <CardMedia
-                      
-                      image="https://source.unsplash.com/random"
-                      title="Image title"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        Heading
-                      </Typography>
-                      <Typography>
-                        This is a media card. You can use this section to
-                        describe the content.
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small" color="primary">
-                        View
-                      </Button>
-                      <Button size="small" color="primary">
-                        Edit
-                      </Button>
-                    </CardActions>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.cardPosterMovie}
+                        image="https://image.tmdb.org/t/p/w185_and_h278_bestv2/nCbkOyOMTEwlEV0LtCOvCnwEONA.jpg"
+                        title="Poster"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Interestelar
+                          <Typography gutterBottom >
+                            Release 2019/02/1998
+                          </Typography>
+                        </Typography>
+                        <Typography>
+                          Action, Family
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
                   </Card>
                 </Grid>
               ))}
             </Grid>
           </Container>
         </main>
-        {/* Footer */}
-        <footer>
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            Something here to give the footer a purpose!
-          </Typography>
-        </footer>
-        {/* End footer */}
       </React.Fragment>
     );
 }
