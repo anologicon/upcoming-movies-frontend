@@ -13,6 +13,8 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from '@material-ui/core/styles';
 import api from '../services/Api';
 import {Link} from "react-router-dom";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
 
 const useStyles = makeStyles(theme => ({
   headerh1: {
@@ -121,11 +123,21 @@ export default function Home() {
               {movies.map((movie, key) => (
                 <Grid item key={key} xs={12} sm={6} md={6}>
                   <Card>
-                    <CardMedia
-                      className={classes.cardPosterMovie}
-                      image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster}`}
-                      title="Poster"
-                    />
+                    <Link
+                      to={{
+                        pathname: "/details",
+                        state: { movieData: movie }
+                      }}
+                    >
+                      <CardActionArea>
+                        <CardMedia
+                          className={classes.cardPosterMovie}
+                          image={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster}`}
+                          title="Poster"
+                        />
+                      </CardActionArea>
+                    </Link>
+
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
                         {movie.title}
@@ -134,14 +146,18 @@ export default function Home() {
                         </Typography>
                       </Typography>
                       <Typography>{movie.genders.join(", ")}</Typography>
-                      <Link
-                        to={{
-                          pathname: "/details",
-                          state: { movieData: movie }
-                        }}
-                      >
-                        Details
-                      </Link>
+                      <CardActions>
+                        <Link
+                          to={{
+                            pathname: "/details",
+                            state: { movieData: movie }
+                          }}
+                        >
+                          <Button variant="contained" color="primary">
+                            Details
+                          </Button>
+                        </Link>
+                      </CardActions>
                     </CardContent>
                   </Card>
                 </Grid>
